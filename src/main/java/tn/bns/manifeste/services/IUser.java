@@ -7,7 +7,7 @@ import tn.bns.manifeste.entities.AppUser;
 
 public interface IUser {
  
-	 public void saveUser(AppUser user); 
+	 public AppUser saveUser(AppUser user);
 	 public List<AppUser > getUsers();
 	 public void updateUser(AppUser appUser,long id);
 	 public void DeleteUser(long id);

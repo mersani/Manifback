@@ -16,8 +16,8 @@ public class UserImpl implements IUser {
     @Autowired
     private UserRepository userRepository;
 
-    public void saveUser(AppUser user) {
-        userRepository.save(user);
+    public AppUser saveUser(AppUser user) {
+        return userRepository.save(user);
 
     }
 
