@@ -10,7 +10,7 @@ import tn.bns.manifeste.repositories.UserRepository;
 
 
 @Service
-public class AccountServiceImpl {
+public class AccountServiceImpl implements IAccountService {
     @Autowired
     private BCryptPasswordEncoder bCrypPasswordEncoder;
 
@@ -38,6 +38,8 @@ public class AccountServiceImpl {
         AppRole role = roleRepository.findByRoleName(roleName);
         AppUser user = userRepository.findByUsername(username);
         user.getUserRoles().add(role);
+        userRepository.saveAndFlush(user);
+
     }
 
     //@Override

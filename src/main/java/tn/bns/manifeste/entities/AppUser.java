@@ -33,28 +33,28 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class AppUser implements Serializable {
 	
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
-	@Column(name="ID_UTILISATEUR",nullable=false, length=20)
+	@Column(name="ID_UTILISATEUR",nullable=false)
 	private Long id;
 	
-	@Column(name="NOM_UTILISATEUR",nullable=false, length=40)
+	@Column(name="NOM_UTILISATEUR",nullable=false)
 	private String username;
 	
-	@Column(name="PASSWORD_UTILISATEUR",nullable=false, length=22)
+	@Column(name="PASSWORD_UTILISATEUR",nullable=false)
 	private String password;
 	
-	@Column(name="email_UTILISATEUR",nullable=false, length=20)
+	@Column(name="email_UTILISATEUR",nullable=false)
 	private String userEmail;
 	
-	@Column(name="CIN_UTILISATEUR",nullable=false, length=10)
+	@Column(name="CIN_UTILISATEUR",nullable=false)
 	private String userCin; 
 	
-	@Column(name="PARTENAIRE_UTILISATEUR",nullable=false, length=30)
+	@Column(name="PARTENAIRE_UTILISATEUR",nullable=false)
 	private String userPartenaire; 
 	
-	@Column(name="GROUPE_UTILISATEUR",nullable=false, length=10)
+	@Column(name="GROUPE_UTILISATEUR",nullable=false)
 	private String userGroupe;
 	
-	@Column(name="MOIS_INSCREPTION",nullable=false, length=10)
+	@Column(name="MOIS_INSCREPTION",nullable=false)
 	private String moisinscreption;
 	
 	/*@JsonIgnore
@@ -161,10 +161,16 @@ public class AppUser implements Serializable {
 		this.moisinscreption = moisinscreption;
 		this.userRoles = userRoles;
 	}
-	
-	
-	
-	
+
+	public AppUser(String username, String password, String userEmail, String userCin, String userPartenaire, String userGroupe, String moisinscreption) {
+		this.username = username;
+		this.password = password;
+		this.userEmail = userEmail;
+		this.userCin = userCin;
+		this.userPartenaire = userPartenaire;
+		this.userGroupe = userGroupe;
+		this.moisinscreption = moisinscreption;
+	}
 }
 	
 	
