@@ -28,7 +28,7 @@ import antlr.collections.List;
 public class AppRole implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	
-	@Column(name="ID_ROLE",nullable=false, length=10)
+	@Column(name="ID_ROLE",nullable=false)
 	private Long id ;
 	
 	/*@JsonIgnore
@@ -42,7 +42,7 @@ public class AppRole implements Serializable{
 	@JoinColumn (name="ID_UTILISATEUR")
 	private Collection<AppUser> appUser;*/
 	
-	@Column(name="NAME_ROLE",nullable=false, length=20)
+	@Column(name="NAME_ROLE",nullable=false)
 	private String roleName;
 	
 	

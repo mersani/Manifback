@@ -26,6 +26,7 @@ public class RoleController {
 	
 	@PostMapping("/save")
 	public void saveRole(@RequestBody AppRole role) {
+		System.out.println("role" + role);
 		iRole.saveRole(role);
 	}
 
