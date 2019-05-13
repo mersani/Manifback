@@ -21,7 +21,7 @@ public class AppMarchandise implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "ID_MARCHANDISE")
 	private long marId;
 
 	@ManyToOne
@@ -30,82 +30,82 @@ public class AppMarchandise implements Serializable {
 	
 
 
-	@Column(name = "MARQUE_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "MARQUE_MARCHANDISE")
 	private String marMarque;
 
-	@Column(name = "POIDS_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "POIDS_MARCHANDISE")
 	private float marPoids;
 
-	@Column(name = "VOLUME_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "VOLUME_MARCHANDISE")
 	private float marVolume;
 
-	@Column(name = "DESIGNATION_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "DESIGNATION_MARCHANDISE")
 	private String marDesignation;
 
-	@Column(name = "CODE_EMBLLAGE_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "CODE_EMBLLAGE_MARCHANDISE")
 	private String marCodeEmballage;
 
-	@Column(name = "NOMBRE_COLIS_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "NOMBRE_COLIS_MARCHANDISE")
 	private int marNombreColis;
 
-	@Column(name = "POIDS_BRUTTE_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "POIDS_BRUTTE_MARCHANDISE")
 	private float marPoidsBrute;
 	
-	@Column(name = "POIDS_NETTE_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "POIDS_NETTE_MARCHANDISE")
 	private float marPoidsNette;
 	
-	@Column(name = "NUM_COLLIS_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "NUM_COLLIS_MARCHANDISE")
 	private int marNumColis;
 
-	@Column(name = "STATUT_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "STATUT_MARCHANDISE")
 	private String marStatut;
 
-	@Column(name = "IDINTERVENNT_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "IDINTERVENNT_MARCHANDISE")
 	private String marIdIntervenant;
 
-	@Column(name = "RAISON_SOCIALE_INTERVENANT_MARCHANDISE", nullable = false, length = 60)
+	@Column(name = "RAISON_SOCIALE_INTERVENANT_MARCHANDISE")
 	private String marRaisonSocialeIntervenant;
 
-	@Column(name = "CODE_DOUANE_INTERVENANT_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "CODE_DOUANE_INTERVENANT_MARCHANDISE")
 	private String marCodeDouaneIntervenant;
 
-	@Column(name = "ADRESSE_INTERVENANT_MARCHANDISE", nullable = false, length = 30)
+	@Column(name = "ADRESSE_INTERVENANT_MARCHANDISE")
 	private String marAdresseIntervenant;
 
-	@Column(name = "TELEPHONE_INTERVENANT_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "TELEPHONE_INTERVENANT_MARCHANDISE")
 	private String marTelephoneIntervenant;
 
-	@Column(name = "IDTRANSITAIRE_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "IDTRANSITAIRE_MARCHANDISE")
 	private int marIdTransitaire;
 
-	@Column(name = "RAISON_SOCIALE_TRANSITAIRE_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "RAISON_SOCIALE_TRANSITAIRE_MARCHANDISE")
 	private String marRaisonSocialeTransitaire;
 
-	@Column(name = "IDMAGASIN_MARCHANDISE", nullable = false, length = 20)
+	@Column(name = "IDMAGASIN_MARCHANDISE")
 	private int marIdMagasin;
 
-	@Column(name = "RAISON_SOCILE_MAGASIN_MARCHANDISE", nullable = false, length = 30)
+	@Column(name = "RAISON_SOCILE_MAGASIN_MARCHANDISE")
 	private String marRaisonSocialeMagasin;
 
-	@Column(name = "MARCHANDISE_DANGEREUSE", nullable = false, length = 40)
+	@Column(name = "MARCHANDISE_DANGEREUSE")
 	private boolean marDangereuse;
 
-	@Column(name = "CATEGORIE_MARCHANDISE", nullable = false, length = 50)
+	@Column(name = "CATEGORIE_MARCHANDISE")
 	private String marCategorieMarchandise;
 
-	@Column(name = "CLASSE_MARCHANDISE", nullable = false, length = 65)
+	@Column(name = "CLASSE_MARCHANDISE")
 	private String marClasse;
 
-	@Column(name = "MARCHANDISE_IMO_PAGE_NUMBER", nullable = false, length = 65)
+	@Column(name = "MARCHANDISE_IMO_PAGE_NUMBER")
 	private String marImoPageNumber;
 
-	@Column(name = "MARCHANDISE_IMO_MS", nullable = false, length = 65)
+	@Column(name = "MARCHANDISE_IMO_MS")
 	private String marImoMs;
 
-	@Column(name = "MARCHANDISE_UNDG_NUMBER", nullable = false, length = 65)
+	@Column(name = "MARCHANDISE_UNDG_NUMBER")
 	private String marUndgNumber;
 
-	@Column(name = "RECEPTIONNAIRE_MARCHANDISE", nullable = false, length = 60)
+	@Column(name = "RECEPTIONNAIRE_MARCHANDISE")
 	private String marReceptionnaire;
 
 	public AppMarchandise() {

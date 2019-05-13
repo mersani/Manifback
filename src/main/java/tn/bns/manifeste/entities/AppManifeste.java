@@ -7,28 +7,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
 public class AppManifeste implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	
-	@Column (name="ID_MANIFESTE",nullable=false, length=10)
+	@Column (name="ID_MANIFESTE")
 	private Long manId;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name= "ID_INTERVENANT") 
-	private AppTitreTransport interId;
+	private AppIntervenant interId;
 	
 	@ManyToOne
 	@JoinColumn (name="ID_PIECE_JOINTE")
@@ -37,72 +27,74 @@ public class AppManifeste implements Serializable {
 	@ManyToOne
 	@JoinColumn (name="CODE_TITRE_TRANSPORT")
 	private AppTitreTransport appTitreTransport;
-	
-	@OneToMany
-	private Collection <AppBureauDouane> bureauDouane =new ArrayList<>();
+
+	@ManyToMany
+	@JoinTable(name = "MANIFESTE_BDouane",
+			joinColumns = { @JoinColumn(name = "ID_MANIFESTE", nullable = false, updatable = false) }, inverseJoinColumns = {
+			@JoinColumn(name = "BURD_ID", nullable = false, updatable = false) })
+	private List <AppBureauDouane> bureauDouane =new ArrayList<>();
 	
 	
 
-	public Collection<AppBureauDouane> getBureauDouane() {
+	public List<AppBureauDouane> getBureauDouane() {
 		return bureauDouane;
 	}
-	public void setBureauDouane(Collection<AppBureauDouane> bureauDouane) {
+	public void setBureauDouane(List<AppBureauDouane> bureauDouane) {
 		this.bureauDouane = bureauDouane;
 	}
 
 
-	@Column(name="ACCONIER_MANIFESTE",nullable=false, length=20)
+	@Column(name="ACCONIER_MANIFESTE")
 	private String acconier ;	 
 	
-	@Column (name="NUM_VOYAGE_MANIFESTE",nullable=false, length=20)
+	@Column (name="NUM_VOYAGE_MANIFESTE")
 	private int manNumVoyage;
 	
-	@Column (name="DATE_DEPART_MANIFESTE",nullable=false, length=30)
+	@Column (name="DATE_DEPART_MANIFESTE")
 	private LocalDate manDateDepart;
 	
-	@Column (name="DATE_ARRIVE_MANIFESTE",nullable=false, length=30)
+	@Column (name="DATE_ARRIVE_MANIFESTE")
 	private LocalDate manDateArrive;
 	
-	@Column (name="HEURE_ARRIVE_MANIFESTE",nullable=false, length=20)
-	private Time manHeureArrive;
+
 	
-	@Column (name="NUM_ENREGISTREMENT_MANIFESTE",nullable=false, length=10)
+	@Column (name="NUM_ENREGISTREMENT_MANIFESTE")
 	private int manNumEnregistrement; 
 	
-	@Column (name="DATE_ENREGISTREMENT_MANIFESTE",nullable=false, length=30)
+	@Column (name="DATE_ENREGISTREMENT_MANIFESTE")
 	private LocalDate manDateEnregistrement; 
 	
-	@Column (name="LIEU_CHARGEMENT_MANIFESTE",nullable=false, length=30)
+	@Column (name="LIEU_CHARGEMENT_MANIFESTE")
 	private String manLieuChargement; 
 	
-	@Column (name="LIEU_DESTINATION_MANIFESTE",nullable=false, length=30)
+	@Column (name="LIEU_DESTINATION_MANIFESTE")
 	private String manLieuDestination; 
 	
-	@Column (name="MODE_TRANSPORT_MANIFESTE",nullable=false, length=30)
+	@Column (name="MODE_TRANSPORT_MANIFESTE")
 	private String manModeTransport; 
 	
-	@Column (name="TYPE_MANIFESTE",nullable=false, length=30)
+	@Column (name="TYPE_MANIFESTE")
 	private String manTypeManifeste;
 	
-	@Column (name="NUM_ESCALE_MANIFESTE",nullable=false, length=30)
+	@Column (name="NUM_ESCALE_MANIFESTE")
 	private int manNumEscale;
 	
-	@Column (name="JAUGE_BRUTE_MANIFESTE",nullable=false, length=30)
+	@Column (name="JAUGE_BRUTE_MANIFESTE")
 	private int manjaugeBrute; 
 	
-	@Column (name="JAUGE_NETTE_MANIFESTE",nullable=false, length=30)
+	@Column (name="JAUGE_NETTE_MANIFESTE")
 	private int manJaugeNette;
 	
-	@Column (name="DATE_ESCALE_MANIFESTE",nullable=false, length=30)
+	@Column (name="DATE_ESCALE_MANIFESTE")
 	private LocalDate manDateEscale;
 	
-	@Column(name="NOMBRE_TITRE_TRANSPORT",nullable=false, length=10)
+	@Column(name="NOMBRE_TITRE_TRANSPORT")
 	private long ttNbRE;
 	
-	@Column(name="REFERENCE_PAYS_DEPART",nullable=false, length=10)
+	@Column(name="REFERENCE_PAYS_DEPART")
 	private String refpaysD;
 	
-	@Column(name="REFERENCE_PAYS_ARRIVE",nullable=false, length=10)
+	@Column(name="REFERENCE_PAYS_ARRIVE")
 	private String refpaysA;
 	
 	
@@ -134,14 +126,6 @@ public class AppManifeste implements Serializable {
 
 
 
-	public Time getManHeureArrive() {
-		return manHeureArrive;
-	}
-
-
-	public void setManHeureArrive(Time manHeureArrive) {
-		this.manHeureArrive = manHeureArrive;
-	}
 
 
 	public int getManNumEnregistrement() {
@@ -165,17 +149,6 @@ public class AppManifeste implements Serializable {
 	public void setManLieuChargement(String manLieuChargement) {
 		this.manLieuChargement = manLieuChargement;
 	}
-
-
-	public String getMANLieuDestination() {
-		return manLieuDestination;
-	}
-
-
-	public void setMANLieuDestination(String manLieuDestination) {
-		manLieuDestination = manLieuDestination;
-	}
-
 
 	public String getManModeTransport() {
 		return manModeTransport;
@@ -247,13 +220,6 @@ public class AppManifeste implements Serializable {
 	public void setAcconier(String acconier) {
 		acconier = acconier;
 	}
-	public String getmanLieuDestination() {
-		return manLieuDestination;
-	}
-	public void setmANLieuDestination(String manLieuDestination) {
-		this.manLieuDestination = manLieuDestination;
-	}
-
 	public long getTtNbRE() {
 		return ttNbRE;
 	}
@@ -304,9 +270,9 @@ public class AppManifeste implements Serializable {
 		return null;
 	}
 	public AppManifeste(AppPieceJointe appPieceJointe, AppTitreTransport appTitreTransport,
-			Collection<AppBureauDouane> bureauDouane, String acconier, int manNumVoyage, LocalDate manDateDepart,
-			LocalDate manDateArrive, Time manHeureArrive, int manNumEnregistrement, LocalDate manDateEnregistrement,
-			String manLieuChargement, String mANLieuDestination, String manModeTransport, String manTypeManifeste,
+			List<AppBureauDouane> bureauDouane, String acconier, int manNumVoyage, LocalDate manDateDepart,
+			LocalDate manDateArrive, int manNumEnregistrement, LocalDate manDateEnregistrement,
+			String manLieuChargement, String manLieuDestination, String manModeTransport, String manTypeManifeste,
 			int manNumEscale, int manjaugeBrute, int manJaugeNette, LocalDate manDateEscale, long ttNbRE,
 			String refpaysD, String refpaysA) {
 		super();
@@ -317,7 +283,6 @@ public class AppManifeste implements Serializable {
 		this.manNumVoyage = manNumVoyage;
 		this.manDateDepart = manDateDepart;
 		this.manDateArrive = manDateArrive;
-		this.manHeureArrive = manHeureArrive;
 		this.manNumEnregistrement = manNumEnregistrement;
 		this.manDateEnregistrement = manDateEnregistrement;
 		this.manLieuChargement = manLieuChargement;
@@ -333,10 +298,19 @@ public class AppManifeste implements Serializable {
 		this.refpaysA = refpaysA;
 	}
 
+	public AppIntervenant getInterId() {
+		return interId;
+	}
 
+	public void setInterId(AppIntervenant interId) {
+		this.interId = interId;
+	}
 
-	
-	
-	
+	public String getManLieuDestination() {
+		return manLieuDestination;
+	}
 
+	public void setManLieuDestination(String manLieuDestination) {
+		this.manLieuDestination = manLieuDestination;
+	}
 }

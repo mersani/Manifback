@@ -18,18 +18,17 @@ import javax.persistence.Table;
 public class AppPieceJointe implements Serializable {
 @Id
 @GeneratedValue	(strategy = GenerationType.AUTO)
-
-@Column(name="ID_PIECE_JOINTE",nullable=false, length=10)
+@Column(name="ID_PIECE_JOINTE" )
    private Long pieceJointeId;
 
 @OneToOne
 @JoinColumn(name= "CODE_TITRE_TRANSPORT") 
 private AppTitreTransport ttCode;
 
-@Column (name="nom_PIECE_JOINTE",nullable=false, length=10)
+@Column (name="nom_PIECE_JOINTE" )
 private String nomPieceJointe; 
  
-@Column (name="type_PIECE_JOINTE",nullable=false, length=10)
+@Column (name="type_PIECE_JOINTE" )
 private String typePieceJointe;
 
 public Long getPieceJointeId() {

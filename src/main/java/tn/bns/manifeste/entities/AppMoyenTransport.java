@@ -18,17 +18,17 @@ import javax.persistence.Table;
 public class AppMoyenTransport implements Serializable {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="ID_MOYENT",nullable=false, length=10)
+	@Column(name="ID_MOYENT")
 	private Long idMoyenT;
 	
 	@ManyToOne
 	@JoinColumn (name="ID_MANIFESTE")
 	private AppManifeste appManifeste;
 	
-	@Column(name="TYPE_MOYENT",nullable=false, length=10)
+	@Column(name="TYPE_MOYENT")
 	private String moyenTType;
 	
-	@Column(name="MATRICULE_MOYENT",nullable=false, length=30)
+	@Column(name="MATRICULE_MOYENT")
 	private String moyenMat;
 	
 	public AppMoyenTransport() {

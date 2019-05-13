@@ -33,28 +33,28 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class AppUser implements Serializable {
 	
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
-	@Column(name="ID_UTILISATEUR",nullable=false)
+	@Column(name="ID_UTILISATEUR")
 	private Long id;
 	
-	@Column(name="NOM_UTILISATEUR",nullable=false)
+	@Column(name="NOM_UTILISATEUR")
 	private String username;
 	
-	@Column(name="PASSWORD_UTILISATEUR",nullable=false)
+	@Column(name="PASSWORD_UTILISATEUR")
 	private String password;
 	
-	@Column(name="email_UTILISATEUR",nullable=false)
+	@Column(name="email_UTILISATEUR")
 	private String userEmail;
 	
-	@Column(name="CIN_UTILISATEUR",nullable=false)
+	@Column(name="CIN_UTILISATEUR")
 	private String userCin; 
 	
-	@Column(name="PARTENAIRE_UTILISATEUR",nullable=false)
+	@Column(name="PARTENAIRE_UTILISATEUR")
 	private String userPartenaire; 
 	
-	@Column(name="GROUPE_UTILISATEUR",nullable=false)
+	@Column(name="GROUPE_UTILISATEUR")
 	private String userGroupe;
 	
-	@Column(name="MOIS_INSCREPTION",nullable=false)
+	@Column(name="MOIS_INSCREPTION")
 	private String moisinscreption;
 	
 	/*@JsonIgnore

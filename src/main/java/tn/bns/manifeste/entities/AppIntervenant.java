@@ -14,26 +14,26 @@ import javax.persistence.Table;
 public class AppIntervenant {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID_INTERVENANT", nullable = false, length = 10)
+	@Column(name = "ID_INTERVENANT" )
 	private Long interId;
 	
 	@OneToOne
 	@JoinColumn(name= "ID_MANIFESTE") 
 	private AppTitreTransport manId;
 	
-	@Column(name = "NOM_EXPEDITEUR", nullable = false, length = 30)
+	@Column(name = "NOM_EXPEDITEUR" )
 	private String nomExp;
-	@Column(name = "NOM_DESTINATAIRE", nullable = false, length = 30)
+	@Column(name = "NOM_DESTINATAIRE" )
 	private String nomDest;
-	@Column(name = "ADRESSE_EXPEDITEUR", nullable = false, length = 30)
+	@Column(name = "ADRESSE_EXPEDITEUR" )
 	private String adrExp;
-	@Column(name = "ADRESSE_DESTINATAIRE", nullable = false, length = 30)
+	@Column(name = "ADRESSE_DESTINATAIRE" )
 	private String adrDest;
-	@Column(name = "EMAIL_DESTINATAIRE", nullable = false, length = 30)
+	@Column(name = "EMAIL_DESTINATAIRE" )
 	private String mailDest;
-	@Column(name = "TELEPHONE_DESTINATAIRE", nullable = false, length = 30)
+	@Column(name = "TELEPHONE_DESTINATAIRE" )
 	private String telDest;
-	@Column(name = "NUM_CONT_DESTINATAIRE", nullable = false, length = 30)
+	@Column(name = "NUM_CONT_DESTINATAIRE" )
 	private Long numContDest;
 	public Long getInterId() {
 		return interId;

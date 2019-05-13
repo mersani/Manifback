@@ -17,32 +17,32 @@ public class AppConteneur implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID_CONTENEUR", nullable = false, length = 10)
+	@Column(name = "ID_CONTENEUR" )
 	private Long contId;
 
 	@ManyToOne
 	@JoinColumn(name = "CODE_TITRE_TRANSPORT")
 	private AppTitreTransport appTitreTransport;
 
-	@Column(name = "REfERENCE_CONTENEUR", nullable = false, length = 25)
+	@Column(name = "REfERENCE_CONTENEUR" )
 	private String contReference;
 
-	@Column(name = "Nombre_Colis_CONTENEUR", nullable = false, length = 25)
+	@Column(name = "Nombre_Colis_CONTENEUR" )
 	private int contNombreColis;
 
-	@Column(name = "TYPE_CONTENEUR", nullable = false, length = 20)
+	@Column(name = "TYPE_CONTENEUR" )
 	private String contType;
 
-	@Column(name = "TAUX_REMPLISSAGE_CONTENEUR", nullable = false, length = 25)
+	@Column(name = "TAUX_REMPLISSAGE_CONTENEUR" )
 	private Float contTauxRemplissage;
 
-	@Column(name = "NOMBRE_SCELLE_CONTENEUR", nullable = false, length = 10)
+	@Column(name = "NOMBRE_SCELLE_CONTENEUR" )
 	private int contNombreScelle;
 
-	@Column(name = "MARQUE_SCELLE_CONTENEUR", nullable = false, length = 10)
+	@Column(name = "MARQUE_SCELLE_CONTENEUR" )
 	private String contMarqueScelle;
 
-	@Column(name = "RESPONSABLE_SCELLE_CONTENEUR", nullable = false, length = 10)
+	@Column(name = "RESPONSABLE_SCELLE_CONTENEUR" )
 	private String contResponsableScelle;
 
 	public AppConteneur() {
@@ -113,8 +113,16 @@ public class AppConteneur implements Serializable{
 		this.contResponsableScelle = contResponsableScelle;
 	}
 
+	public AppTitreTransport getAppTitreTransport() {
+		return appTitreTransport;
+	}
+
+	public void setAppTitreTransport(AppTitreTransport appTitreTransport) {
+		this.appTitreTransport = appTitreTransport;
+	}
+
 	public AppConteneur(AppTitreTransport appTitreTransport, String contReference, int contNombreColis, String contType,
-			Float contTauxRemplissage, int contNombreScelle, String contMarqueScelle, String contResponsableScelle) {
+						Float contTauxRemplissage, int contNombreScelle, String contMarqueScelle, String contResponsableScelle) {
 		super();
 		this.appTitreTransport = appTitreTransport;
 		this.contReference = contReference;

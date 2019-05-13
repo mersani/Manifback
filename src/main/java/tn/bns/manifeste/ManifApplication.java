@@ -36,11 +36,14 @@ public class ManifApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         accountService.saveUser(new AppUser("admin", "1235", "admin@gmail.com", "012345678", "aa", "aa", "aa"));
+        accountService.saveUser(new AppUser("maher", "1235", "maher@gmail.com", "012345678", "aa", "aa", "aa"));
         accountService.saveUser(new AppUser("user", "user", "user@gmail.com", "102345678", "ab", "ab", "ab"));
         accountService.saveRole(new AppRole( "ADMIN"));
         accountService.saveRole(new AppRole("USER"));
+        accountService.saveRole(new AppRole("CONCILIATEUR"));
         accountService.addRoleToUser("admin", "ADMIN");
         accountService.addRoleToUser("user", "USER");
+        accountService.addRoleToUser("maher", "CONCILIATEUR");
     };
 
 

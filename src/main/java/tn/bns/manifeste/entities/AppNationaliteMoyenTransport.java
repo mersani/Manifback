@@ -17,7 +17,7 @@ public class AppNationaliteMoyenTransport implements Serializable {
 	
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	
-	@Column(name="ID_NAT_MOYENT",nullable=false, length=10)
+	@Column(name="ID_NAT_MOYENT")
 	private Long NATmoyenT_id;
 
 	@ManyToOne

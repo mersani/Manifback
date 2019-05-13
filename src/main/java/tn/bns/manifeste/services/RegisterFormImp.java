@@ -63,11 +63,11 @@ public class RegisterFormImp implements IRegisterForm{
 		manif.setManDateDepart(registerForm.getManDateArrive());
 		manif.setManDateEnregistrement(registerForm.getManDateEnregistrement());
 		manif.setManDateEscale(registerForm.getManDateEscale());
-		manif.setManHeureArrive(registerForm.getManHeureArrive());
+		//manif.setManHeureArrive(registerForm.getManHeureArrive());
 		manif.setManjaugeBrute(registerForm.getManjaugeBrute());
 		manif.setManJaugeNette(registerForm.getManJaugeNette());
 		manif.setManLieuChargement(registerForm.getManLieuChargement());
-		manif.setmANLieuDestination(registerForm.getManLieuDestination());
+		manif.setManLieuDestination(registerForm.getManLieuDestination());
 		manif.setManModeTransport(registerForm.getManModeTransport());
 		manif.setManNumEnregistrement(registerForm.getManNumEnregistrement());
 		manif.setManNumEscale(registerForm.getManNumEscale());

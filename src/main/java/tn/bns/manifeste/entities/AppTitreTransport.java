@@ -3,52 +3,42 @@ package tn.bns.manifeste.entities;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 
 @Entity
 @Table
 public class AppTitreTransport implements Serializable{
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	
-	@Column(name="CODE_TITRE_TRANSPORT",nullable=false, length=10)
+	@Column(name="CODE_TITRE_TRANSPORT" )
     private Long ttCode; 
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name= "ID_PIECE_JOINTE") 
 	private AppPieceJointe appPieceJointe;
 	
-	@Column(name="NUMERO_VOYAGE_TITRE_TRANSPORT",nullable=false, length=10)
+	@Column(name="NUMERO_VOYAGE_TITRE_TRANSPORT" )
 	private int ttNumeroDevoyage; 
 	
-	@Column(name="DATE_DEPART_DE_NAVIRE_TITRE_TRANSPORT",nullable=false, length=30)
+	@Column(name="DATE_DEPART_DE_NAVIRE_TITRE_TRANSPORT" )
 	private Date ttDateDepartDeNavire; 
 	
-	@Column(name="DATE_ARRIVE_NAVIRE_TITRE_TRANSPORT",nullable=false, length=30)
+	@Column(name="DATE_ARRIVE_NAVIRE_TITRE_TRANSPORT" )
 	private Date ttDatearriveDeNavire; 
 	
-	@Column(name="HEURE_ARRIVE_TITRE_TRANSPORT",nullable=false, length=10)
+	@Column(name="HEURE_ARRIVE_TITRE_TRANSPORT" )
 	private float ttHeureArrive; 
 	
-	@Column(name="NUMERO_ENREGISTREMENT_TITRE_TRANSPORT",nullable=false, length=10)
+	@Column(name="NUMERO_ENREGISTREMENT_TITRE_TRANSPORT" )
 	private int ttNumeroEnregistrement; 
 	
-	@Column(name="NATURE_TITRE_TRANSPORT",nullable=false, length=60)
+	@Column(name="NATURE_TITRE_TRANSPORT")
 	private String ttNatureTitreTransport; 
 	
-	@Column(name="NTURE_MARCHNDISE_TITRE_TRANSPORT",nullable=false, length=10)
+	@Column(name="NTURE_MARCHNDISE_TITRE_TRANSPORT" )
 	private String ttNatureMarchandise;
 	
-	@Column(name="REFERENCE_TITRE_TRANSPORT",nullable=false, length=10)
+	@Column(name="REFERENCE_TITRE_TRANSPORT" )
 	private String ttReference;
 	
 
@@ -101,12 +91,7 @@ public class AppTitreTransport implements Serializable{
 	public void setTtReference(String ttReference) {
 		this.ttReference = ttReference;
 	}
-	public long getTtCode() {
-		return ttCode;
-	}
-	public void setTtCode(long ttCode) {
-		this.ttCode = ttCode;
-	}
+
 	public AppPieceJointe getAppPieceJointe() {
 		return appPieceJointe;
 	}
@@ -115,9 +100,6 @@ public class AppTitreTransport implements Serializable{
 	}
 	public void setTtNumeroDevoyage(int ttNumeroDevoyage) {
 		this.ttNumeroDevoyage = ttNumeroDevoyage;
-	}
-	public void setTtCode(Long ttCode) {
-		this.ttCode = ttCode;
 	}
 	public AppTitreTransport() {
 		super();
@@ -139,9 +121,11 @@ public class AppTitreTransport implements Serializable{
 		
 	}
 
+	public Long getTtCode() {
+		return ttCode;
+	}
 
-
-
-
-
+	public void setTtCode(Long ttCode) {
+		this.ttCode = ttCode;
+	}
 }

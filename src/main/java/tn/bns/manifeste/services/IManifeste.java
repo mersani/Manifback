@@ -3,11 +3,12 @@ package tn.bns.manifeste.services;
 import java.util.List;
 
 import tn.bns.manifeste.entities.AppManifeste;
+import tn.bns.manifeste.entities.ManifestObject;
 
 
 public interface IManifeste {
 
-	public void saveManifeste(AppManifeste manifeste);
+	public boolean saveManifeste(ManifestObject manifestObject);
 	public List<AppManifeste> getManifeste();
 	public void DeleteManifeste(long manId);
 	public void updateManifeste(AppManifeste appManifeste,long manId); 

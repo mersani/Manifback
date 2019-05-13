@@ -17,17 +17,17 @@ import javax.persistence.Table;
 public class AppTransporteur implements Serializable {
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
 	
-	@Column(name="ID_TRANSPORTEUR",nullable=false, length=10)
+	@Column(name="ID_TRANSPORTEUR" )
 	private Long transId;
 	
 	@ManyToOne
 	@JoinColumn (name="ID_MANIFESTE") 
 	private AppManifeste appManifeste;
 	
-	@Column(name="place_TRANSPORTEUR",nullable=false, length=10)
+	@Column(name="place_TRANSPORTEUR" )
 	private String transPlace;
 	
-	@Column(name="pays_TRANSPORTEUR",nullable=false, length=10)
+	@Column(name="pays_TRANSPORTEUR" )
 	private String transPays;
 
 	public AppTransporteur() {
@@ -42,9 +42,35 @@ public class AppTransporteur implements Serializable {
 		this.transPays = transPays;
 	}
 
+	public Long getTransId() {
+		return transId;
+	}
 
+	public void setTransId(Long transId) {
+		this.transId = transId;
+	}
 
+	public AppManifeste getAppManifeste() {
+		return appManifeste;
+	}
 
+	public void setAppManifeste(AppManifeste appManifeste) {
+		this.appManifeste = appManifeste;
+	}
 
+	public String getTransPlace() {
+		return transPlace;
+	}
 
+	public void setTransPlace(String transPlace) {
+		this.transPlace = transPlace;
+	}
+
+	public String getTransPays() {
+		return transPays;
+	}
+
+	public void setTransPays(String transPays) {
+		this.transPays = transPays;
+	}
 }

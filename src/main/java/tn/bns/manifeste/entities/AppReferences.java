@@ -20,22 +20,22 @@ import javax.persistence.Table;
 public class AppReferences implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	
-	@Column(name="CODE_REFERENCE",nullable=false, length=20)
+	@Column(name="CODE_REFERENCE" )
 	private Long idreference;
 	
-	@Column(name="CODE_PAYS",nullable=false, length=20)
+	@Column(name="CODE_PAYS" )
 	private Long codepays;
 
-	@Column(name="ALPHA2",nullable=false, length=20)
+	@Column(name="ALPHA2" )
 	private String alpha2;
 	
-	@Column(name="ALPHA3",nullable=false, length=20)
+	@Column(name="ALPHA3" )
 	private String alpha3;
 	
-	@Column(name="NON_EN_GB",nullable=false, length=30)
+	@Column(name="NON_EN_GB" )
 	private String nom_en_gb;
 	
-	@Column(name="NOM_EN_FR",nullable=false, length=40)
+	@Column(name="NOM_EN_FR" )
 	private String nom_fr_fr;
 
 	public Long getIdreference() {

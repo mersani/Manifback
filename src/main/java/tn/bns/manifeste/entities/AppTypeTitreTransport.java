@@ -18,7 +18,7 @@ public class AppTypeTitreTransport implements Serializable {
 	
 	@Id @GeneratedValue (strategy = GenerationType.AUTO)
 	
-	@Column(name="ID_TYPE_TITRE_TRANSPORT",nullable=false, length=10)
+	@Column(name="ID_TYPE_TITRE_TRANSPORT" )
 	private Long typeTtId;
 	
 	
@@ -27,7 +27,7 @@ public class AppTypeTitreTransport implements Serializable {
 	private AppTitreTransport appTitreTransport; 
 
 	
-	@Column(name="NOM_TYPE_TITRE_TRANSPORT",nullable=false, length=60)
+	@Column(name="NOM_TYPE_TITRE_TRANSPORT")
 	private String typeTNom;
 
 	public Long getTypeTtId() {

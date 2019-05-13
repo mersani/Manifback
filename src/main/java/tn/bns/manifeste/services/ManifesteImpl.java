@@ -6,20 +6,117 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import org.springframework.transaction.annotation.Transactional;
 import tn.bns.manifeste.entities.AppManifeste;
+import tn.bns.manifeste.entities.AppIntervenant;
+import tn.bns.manifeste.entities.AppBureauDouane;
+import tn.bns.manifeste.entities.AppPieceJointe;
+import tn.bns.manifeste.entities.AppConsignataire;
+import tn.bns.manifeste.entities.AppMoyenTransport;
+import tn.bns.manifeste.entities.AppTransporteur;
+import tn.bns.manifeste.entities.AppTitreTransport;
+import tn.bns.manifeste.entities.AppMarchandise;
+import tn.bns.manifeste.entities.AppConteneur;
+import tn.bns.manifeste.entities.ManifestObject;
 import tn.bns.manifeste.repositories.ManifesteRepository;
+import tn.bns.manifeste.repositories.TitreTransportRepository;
+import tn.bns.manifeste.repositories.MoyenTransportRepository;
+import tn.bns.manifeste.repositories.TransporteurRepository;
+import tn.bns.manifeste.repositories.MarchandiseRepository;
+import tn.bns.manifeste.repositories.ConteneurRepository;
+import tn.bns.manifeste.repositories.ConsignataireRepository;
+import tn.bns.manifeste.repositories.BureauDouaneRepository;
+import tn.bns.manifeste.repositories.PieceJointeRepository;
+import tn.bns.manifeste.repositories.IntervenantRepository;
 
 
 @Service
 public class ManifesteImpl implements IManifeste {
 	
 	@Autowired
-	private ManifesteRepository manifesteRepository; 
-	
+	private ManifesteRepository manifesteRepository;
+	@Autowired
+	private TitreTransportRepository titreTransportRepository;
+	@Autowired
+	private TransporteurRepository transporteurRepository;
+	@Autowired
+	private MarchandiseRepository marchandiseRepository;
+	@Autowired
+	private ConteneurRepository conteneurRepository;
+	@Autowired
+	private BureauDouaneRepository douaneRepository;
+	@Autowired
+	private MoyenTransportRepository moyenTransportRepository;
+	@Autowired
+	private ConsignataireRepository consignataireRepository;
+	@Autowired
+	private IntervenantRepository intervenantRepository;
+@Autowired
+	private PieceJointeRepository pieceJointeRepository;
+
 	@Override
-	public void saveManifeste(AppManifeste manifeste) {
-		manifesteRepository.save(manifeste); 
+	@Transactional
+	public boolean saveManifeste(ManifestObject manifeste) {
+
+			//System.out.println("begin service " + manifeste.getAppManifeste().getAppTitreTransport().getTtNatureMarchandise() );
+		AppPieceJointe appPieceJointe = new AppPieceJointe();
+		AppPieceJointe appPieceJointe1 = pieceJointeRepository.saveAndFlush(appPieceJointe);
+		manifeste.getAppManifeste().getAppTitreTransport().setAppPieceJointe(appPieceJointe1);
+		AppTitreTransport appTitreTransport1 = new AppTitreTransport();
+		appTitreTransport1.setTtNatureMarchandise(manifeste.getAppManifeste().getAppTitreTransport().getTtNatureMarchandise());
+		AppTitreTransport appTitreTransport = titreTransportRepository.saveAndFlush(appTitreTransport1);
+
+		System.out.println("begin service add appTitreTransport ");
+
+			/**
+			 * add marchandise
+			 */
+			manifeste.getAppMarchandise().setAppTitreTransport(appTitreTransport);
+
+			AppMarchandise appMarchandise = marchandiseRepository.saveAndFlush(manifeste.getAppMarchandise());
+			System.out.println("begin service add marchandise ");
+			/**
+			 * add conteneur
+			 */
+			//manifeste.getAppConteneur().setAppTitreTransport(appTitreTransport);
+			AppConteneur appConteneur = conteneurRepository.saveAndFlush(manifeste.getAppConteneur());
+			System.out.println("begin service add conteneur ");
+			/**
+			 * add manifest
+			 */
+			manifeste.getAppManifeste().setAppTitreTransport(appTitreTransport);
+		List<AppBureauDouane> list = manifeste.getAppManifeste().getBureauDouane();
+		AppBureauDouane appBureauDouane = douaneRepository.saveAndFlush(list.get(0));
+		System.out.println("begin service add manifest ");
+		AppIntervenant appIntervenant = new AppIntervenant();
+		AppIntervenant appIntervenant1 = intervenantRepository.saveAndFlush(appIntervenant);
+		manifeste.getAppManifeste().setInterId(appIntervenant1);
+		manifeste.getAppManifeste().setAppTitreTransport(appTitreTransport);
+		manifeste.getAppManifeste().getBureauDouane().add(appBureauDouane);
+			AppManifeste appManifeste = manifesteRepository.saveAndFlush(manifeste.getAppManifeste());
+			System.out.println("end service add manifest ");
+			/**
+			 * add transporteur
+			 */
+			manifeste.getAppTransporteur().setAppManifeste(appManifeste);
+			AppTransporteur appTransporteur = transporteurRepository.saveAndFlush(manifeste.getAppTransporteur());
+			System.out.println("begin service add transporteur ");
+			/**
+			 * add MoyenTransport
+			 */
+			manifeste.getAppMoyenTransport().setAppManifeste(appManifeste);
+			AppMoyenTransport appMoyenTransport = moyenTransportRepository.saveAndFlush(manifeste.getAppMoyenTransport());
+			System.out.println("begin service add moyentransport ");
+			/**
+			 * add Consignateur
+			 */
+			manifeste.getAppConsignataire().setAppManifeste(appManifeste);
+			AppConsignataire appConsignataire = consignataireRepository.saveAndFlush(manifeste.getAppConsignataire());
+			System.out.println("begin service add consignateur ");
+			return true;
 	}
+
+
 
 	@Override
 	public List<AppManifeste> getManifeste() {
@@ -41,11 +138,10 @@ public class ManifesteImpl implements IManifeste {
 			manifesteb.setManNumVoyage(appManifeste.getManNumVoyage());
 			manifesteb.setManDateDepart(appManifeste.getManDateDepart());
 			manifesteb.setManDateArrive(appManifeste.getManDateArrive());
-			manifesteb.setManHeureArrive(appManifeste.getManHeureArrive());
+			//manifesteb.setManHeureArrive(appManifeste.getManHeureArrive());
 			manifesteb.setManNumEnregistrement(appManifeste.getManNumEnregistrement());
 			manifesteb.setManDateEnregistrement(appManifeste.getManDateEnregistrement());
 			manifesteb.setManLieuChargement(appManifeste.getManLieuChargement());
-			manifesteb.setMANLieuDestination(appManifeste.getMANLieuDestination());
 			manifesteb.setManModeTransport(appManifeste.getManModeTransport());
 			manifesteb.setManTypeManifeste(appManifeste.getManTypeManifeste());
 			manifesteb.setManNumEscale(appManifeste.getManNumEscale());

@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Entity
 public class AppConsignataire extends AppUser{
 	
-	@Column(name="ADRESSE_CONSIGNATAIRE",nullable=false, length=20)
+	@Column(name="ADRESSE_CONSIGNATAIRE")
 	private String consAdresse;
 
 	public String getConsAdresse() {

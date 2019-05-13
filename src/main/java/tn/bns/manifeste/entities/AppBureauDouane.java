@@ -2,28 +2,22 @@ package tn.bns.manifeste.entities;
 
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
 @Table
 public class AppBureauDouane implements Serializable {
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	@Column (name="BURD_ID",nullable=false, length=10)
+	@Id
+	@Column (name="BURD_ID")
 	private Long burDId;
 	
-	@ManyToOne
-	@JoinColumn (name="ID_MANIFESTE") 
-	private AppManifeste appManifeste; 
+
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "bureauDouane")
+	private List<AppManifeste> appManifeste;
 	
 	
 	
@@ -39,15 +33,12 @@ public class AppBureauDouane implements Serializable {
 		this.burDId = burDId;
 	}
 
-	public AppManifeste getAppManifeste() {
+	public List<AppManifeste> getAppManifeste() {
 		return appManifeste;
 	}
 
-	public void setAppManifeste(AppManifeste appManifeste) {
+	public void setAppManifeste(List<AppManifeste> appManifeste) {
 		this.appManifeste = appManifeste;
 	}
-
-	
-	
 }
 
