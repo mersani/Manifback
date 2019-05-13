@@ -7,19 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
-import tn.bns.manifeste.entities.AppManifeste;
-import tn.bns.manifeste.entities.AppIntervenant;
-import tn.bns.manifeste.entities.AppBureauDouane;
-import tn.bns.manifeste.entities.AppPieceJointe;
-import tn.bns.manifeste.entities.AppConsignataire;
-import tn.bns.manifeste.entities.AppMoyenTransport;
-import tn.bns.manifeste.entities.AppTransporteur;
-import tn.bns.manifeste.entities.AppTitreTransport;
-import tn.bns.manifeste.entities.AppMarchandise;
-import tn.bns.manifeste.entities.AppConteneur;
-import tn.bns.manifeste.entities.ManifestObject;
+import tn.bns.manifeste.entities.*;
 import tn.bns.manifeste.repositories.ManifesteRepository;
 import tn.bns.manifeste.repositories.TitreTransportRepository;
+import tn.bns.manifeste.repositories.TypeTitreTransportRepository;
 import tn.bns.manifeste.repositories.MoyenTransportRepository;
 import tn.bns.manifeste.repositories.TransporteurRepository;
 import tn.bns.manifeste.repositories.MarchandiseRepository;
@@ -53,6 +44,8 @@ public class ManifesteImpl implements IManifeste {
 	private IntervenantRepository intervenantRepository;
 @Autowired
 	private PieceJointeRepository pieceJointeRepository;
+@Autowired
+	private TypeTitreTransportRepository typeTitreTransportRepository;
 
 	@Override
 	@Transactional
@@ -116,6 +109,37 @@ public class ManifesteImpl implements IManifeste {
 			return true;
 	}
 
+	@Override
+	public boolean saveConnaissement(ConnaissementObject connaissementObject) {
+
+		AppTitreTransport appTitreTransport = titreTransportRepository.saveAndFlush(connaissementObject.getAppManifeste().getAppTitreTransport());
+		AppTypeTitreTransport appTypeTitreTransport = connaissementObject.getAppTypeTitreTransport();
+		appTypeTitreTransport.setAppTitreTransport(appTitreTransport);
+		AppTypeTitreTransport appTypeTitreTransport1 = typeTitreTransportRepository.saveAndFlush(appTypeTitreTransport);
+		/**
+		 * save manifest
+		 */
+		List<AppBureauDouane> list = connaissementObject.getAppManifeste().getBureauDouane();
+		AppBureauDouane appBureauDouane = douaneRepository.saveAndFlush(list.get(0));
+		AppIntervenant appIntervenant = new AppIntervenant();
+		AppIntervenant appIntervenant1 = intervenantRepository.saveAndFlush(appIntervenant);
+		connaissementObject.getAppManifeste().setInterId(appIntervenant1);
+		connaissementObject.getAppManifeste().setAppTitreTransport(appTitreTransport);
+		connaissementObject.getAppManifeste().getBureauDouane().add(appBureauDouane);
+		AppManifeste appManifeste = manifesteRepository.saveAndFlush(connaissementObject.getAppManifeste());
+		connaissementObject.getAppMarchandise().setAppTitreTransport(appTitreTransport);
+
+		AppMarchandise appMarchandise = marchandiseRepository.saveAndFlush(connaissementObject.getAppMarchandise());
+		System.out.println("begin service add marchandise ");
+		/**
+		 * add conteneur
+		 */
+		//manifeste.getAppConteneur().setAppTitreTransport(appTitreTransport);
+		AppConteneur appConteneur = conteneurRepository.saveAndFlush(connaissementObject.getAppConteneur());
+		System.out.println("begin service add conteneur ");
+
+		return false;
+	}
 
 
 	@Override

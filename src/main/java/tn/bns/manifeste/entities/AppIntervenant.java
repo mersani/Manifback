@@ -1,17 +1,11 @@
 package tn.bns.manifeste.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table
-public class AppIntervenant {
+public class AppIntervenant implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_INTERVENANT" )
@@ -19,7 +13,7 @@ public class AppIntervenant {
 	
 	@OneToOne
 	@JoinColumn(name= "ID_MANIFESTE") 
-	private AppTitreTransport manId;
+	private AppManifeste manId;
 	
 	@Column(name = "NOM_EXPEDITEUR" )
 	private String nomExp;
@@ -41,10 +35,10 @@ public class AppIntervenant {
 	public void setInterId(Long interId) {
 		this.interId = interId;
 	}
-	public AppTitreTransport getManId() {
+	public AppManifeste getManId() {
 		return manId;
 	}
-	public void setManId(AppTitreTransport manId) {
+	public void setManId(AppManifeste manId) {
 		this.manId = manId;
 	}
 	public String getNomExp() {
@@ -89,7 +83,7 @@ public class AppIntervenant {
 	public void setNumContDest(Long numContDest) {
 		this.numContDest = numContDest;
 	}
-	public AppIntervenant(AppTitreTransport manId, String nomExp, String nomDest, String adrExp, String adrDest,
+	public AppIntervenant(AppManifeste manId, String nomExp, String nomDest, String adrExp, String adrDest,
 			String mailDest, String telDest, Long numContDest) {
 		super();
 		this.manId = manId;

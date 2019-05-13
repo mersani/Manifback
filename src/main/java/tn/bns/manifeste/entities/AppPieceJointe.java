@@ -21,7 +21,7 @@ public class AppPieceJointe implements Serializable {
 @Column(name="ID_PIECE_JOINTE" )
    private Long pieceJointeId;
 
-@OneToOne
+
 @JoinColumn(name= "CODE_TITRE_TRANSPORT") 
 private AppTitreTransport ttCode;
 

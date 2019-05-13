@@ -58,6 +58,11 @@ public class AppTypeTitreTransport implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public AppTitreTransport getAppTitreTransport() {
+		return appTitreTransport;
+	}
 
-	
+	public void setAppTitreTransport(AppTitreTransport appTitreTransport) {
+		this.appTitreTransport = appTitreTransport;
+	}
 }

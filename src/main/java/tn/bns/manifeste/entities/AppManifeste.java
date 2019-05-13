@@ -1,5 +1,7 @@
 package tn.bns.manifeste.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -15,20 +17,20 @@ public class AppManifeste implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column (name="ID_MANIFESTE")
 	private Long manId;
-	
+	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name= "ID_INTERVENANT") 
 	private AppIntervenant interId;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn (name="ID_PIECE_JOINTE")
 	private AppPieceJointe appPieceJointe;
-	
-	@ManyToOne
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn (name="CODE_TITRE_TRANSPORT")
 	private AppTitreTransport appTitreTransport;
-
-	@ManyToMany
+	@JsonIgnore
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "MANIFESTE_BDouane",
 			joinColumns = { @JoinColumn(name = "ID_MANIFESTE", nullable = false, updatable = false) }, inverseJoinColumns = {
 			@JoinColumn(name = "BURD_ID", nullable = false, updatable = false) })

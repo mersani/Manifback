@@ -1,5 +1,6 @@
 package tn.bns.manifeste.entities;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,7 +17,7 @@ import javax.persistence.Table;
 
 
 @Entity
-public class AppConsignataire extends AppUser{
+public class AppConsignataire extends AppUser implements Serializable {
 	
 	@Column(name="ADRESSE_CONSIGNATAIRE")
 	private String consAdresse;

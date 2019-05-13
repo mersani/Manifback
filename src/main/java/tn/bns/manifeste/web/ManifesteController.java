@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.bns.manifeste.entities.AppManifeste;
+import tn.bns.manifeste.entities.ConnaissementObject;
 import tn.bns.manifeste.entities.ManifestObject;
 import tn.bns.manifeste.services.IManifeste;
 
@@ -35,14 +36,16 @@ public class ManifesteController {
             System.out.println("null "  );
 
         }
-        System.out.println("begin contro "  );
-
         return iManifeste.saveManifeste(manifestObject);
     }
+    @PostMapping("/saveConnaisement")
+    public boolean saveConnaissement(@RequestBody ConnaissementObject connaissementObject) {
+        return iManifeste.saveConnaissement(connaissementObject);
+    }
 
-    @GetMapping("/all ")
-    public @ResponseBody
-    List<AppManifeste> getAllmanifestes() {
+    @GetMapping("/allManifestes")
+    public @ResponseBody List<AppManifeste> getAllmanifestes() {
+        System.out.println("lalalal controlleur " );
         return iManifeste.getManifeste();
     }
 
