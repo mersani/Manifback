@@ -1,6 +1,8 @@
 package tn.bns.manifeste.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -14,8 +16,8 @@ public class AppBureauDouane implements Serializable {
 	@Id
 	@Column (name="BURD_ID")
 	private Long burDId;
-	
 
+@JsonIgnore
 	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "bureauDouane")
 	private List<AppManifeste> appManifeste;
 	

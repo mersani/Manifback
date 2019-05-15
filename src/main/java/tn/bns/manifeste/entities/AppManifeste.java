@@ -22,15 +22,14 @@ public class AppManifeste implements Serializable {
 	@JoinColumn(name= "ID_INTERVENANT") 
 	private AppIntervenant interId;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne
 	@JoinColumn (name="ID_PIECE_JOINTE")
 	private AppPieceJointe appPieceJointe;
-	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
+
+	@ManyToOne
 	@JoinColumn (name="CODE_TITRE_TRANSPORT")
 	private AppTitreTransport appTitreTransport;
-	@JsonIgnore
-	@ManyToMany(fetch = FetchType.LAZY)
+	@ManyToMany
 	@JoinTable(name = "MANIFESTE_BDouane",
 			joinColumns = { @JoinColumn(name = "ID_MANIFESTE", nullable = false, updatable = false) }, inverseJoinColumns = {
 			@JoinColumn(name = "BURD_ID", nullable = false, updatable = false) })

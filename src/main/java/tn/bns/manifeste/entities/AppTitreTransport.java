@@ -1,7 +1,11 @@
 package tn.bns.manifeste.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -40,6 +44,10 @@ public class AppTitreTransport implements Serializable{
 	
 	@Column(name="REFERENCE_TITRE_TRANSPORT" )
 	private String ttReference;
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "ID_MANIFESTE")
+	private List<AppManifeste>  manifestes = new ArrayList<>();
 	
 
 	public int getTtNumeroDevoyage() {
