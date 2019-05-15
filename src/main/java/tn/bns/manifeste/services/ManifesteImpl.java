@@ -138,7 +138,7 @@ public class ManifesteImpl implements IManifeste {
 		AppConteneur appConteneur = conteneurRepository.saveAndFlush(connaissementObject.getAppConteneur());
 		System.out.println("begin service add conteneur ");
 
-		return false;
+		return true;
 	}
 
 
