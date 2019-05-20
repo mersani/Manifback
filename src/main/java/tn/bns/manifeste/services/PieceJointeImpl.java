@@ -8,15 +8,42 @@ import org.springframework.stereotype.Service;
 
 import tn.bns.manifeste.entities.AppPieceJointe;
 import tn.bns.manifeste.repositories.PieceJointeRepository;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 @Service
 public class PieceJointeImpl implements IPieceJointe{
+	Logger log = LoggerFactory.getLogger(this.getClass().getName());
+	private final Path rootLocation = Paths.get("C:\\files");
 	@Autowired
 	private PieceJointeRepository pieceJointeRepository; 
 	
 	public void savePieceJointe(AppPieceJointe pieceJointe) {
 		pieceJointeRepository.save(pieceJointe); 
 	}
+	public String storeFile(String fileName, byte[] fileContent, String fileFolder) throws IOException {
+
+			File file = new File(fileFolder, fileName);
+		FileOutputStream fileOutputStream = new FileOutputStream(file);
+		try {
+			fileOutputStream.write(fileContent);
+		} finally {
+			fileOutputStream.close();
+			return fileName;
+		}
+	}
+
+
 
 	@Override
 	public List<AppPieceJointe> getPieceJointes() {

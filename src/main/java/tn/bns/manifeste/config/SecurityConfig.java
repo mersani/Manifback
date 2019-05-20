@@ -1,6 +1,7 @@
 package tn.bns.manifeste.config;
 
-import javax.xml.transform.Source;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -83,5 +84,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     }
+
 
 }

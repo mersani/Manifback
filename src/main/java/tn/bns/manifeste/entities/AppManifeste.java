@@ -17,6 +17,7 @@ public class AppManifeste implements Serializable {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column (name="ID_MANIFESTE")
 	private Long manId;
+
 	@JsonIgnore
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name= "ID_INTERVENANT") 
@@ -97,7 +98,10 @@ public class AppManifeste implements Serializable {
 	
 	@Column(name="REFERENCE_PAYS_ARRIVE")
 	private String refpaysA;
-	
+
+	@JsonIgnore
+	@OneToOne
+	public AppEtatD appEtatD;
 	
 	public AppManifeste() {
 		super();
@@ -124,10 +128,13 @@ public class AppManifeste implements Serializable {
 	}
 
 
+	public AppEtatD getAppEtatD() {
+		return appEtatD;
+	}
 
-
-
-
+	public void setAppEtatD(AppEtatD appEtatD) {
+		this.appEtatD = appEtatD;
+	}
 
 	public int getManNumEnregistrement() {
 		return manNumEnregistrement;
