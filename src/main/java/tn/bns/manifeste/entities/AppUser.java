@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -54,8 +55,8 @@ public class AppUser implements Serializable {
 	@Column(name="GROUPE_UTILISATEUR")
 	private String userGroupe;
 	
-	@Column(name="MOIS_INSCREPTION")
-	private String moisinscreption;
+	@Column(name="date_INSCREPTION")
+	private Date dateinsc;
 	
 	/*@JsonIgnore
 	@OneToMany(fetch=FetchType.EAGER)
@@ -119,15 +120,12 @@ public class AppUser implements Serializable {
 		this.userGroupe = userGroupe;
 	}
 
-
-	
-	
-	public String getMoisinscreption() {
-		return moisinscreption;
+	public Date getDateinsc() {
+		return dateinsc;
 	}
 
-	public void setMoisinscreption(String moisinscreption) {
-		this.moisinscreption = moisinscreption;
+	public void setDateinsc(Date dateinsc) {
+		this.dateinsc = dateinsc;
 	}
 
 	public Collection<AppRole> getUserRoles() {
@@ -150,7 +148,7 @@ public class AppUser implements Serializable {
 	}
 
 	public AppUser(String username, String password, String userEmail, String userCin, String userPartenaire,
-			String userGroupe, String moisinscreption, Collection<AppRole> userRoles) {
+			String userGroupe, Date dateinsc, Collection<AppRole> userRoles) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -158,18 +156,18 @@ public class AppUser implements Serializable {
 		this.userCin = userCin;
 		this.userPartenaire = userPartenaire;
 		this.userGroupe = userGroupe;
-		this.moisinscreption = moisinscreption;
+		this.dateinsc = dateinsc;
 		this.userRoles = userRoles;
 	}
 
-	public AppUser(String username, String password, String userEmail, String userCin, String userPartenaire, String userGroupe, String moisinscreption) {
+	public AppUser(String username, String password, String userEmail, String userCin, String userPartenaire, String userGroupe, Date dateinsc) {
 		this.username = username;
 		this.password = password;
 		this.userEmail = userEmail;
 		this.userCin = userCin;
 		this.userPartenaire = userPartenaire;
 		this.userGroupe = userGroupe;
-		this.moisinscreption = moisinscreption;
+		this.dateinsc= dateinsc;
 	}
 }
 	
