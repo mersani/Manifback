@@ -7,6 +7,7 @@ import tn.bns.manifeste.entities.AppEtatD;
 
 import tn.bns.manifeste.services.IEtatD;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -15,9 +16,13 @@ import java.util.List;
 @RequestMapping(value = "etatD", produces = "application/json")
 public class EtatDController {
 	@Autowired
-	private IEtatD iEtatD; 
+	private IEtatD iEtatD;
+
 	@PostMapping("/save")
-	public void saveEtatD(@RequestBody AppEtatD etatD) {
+	public void saveEtatD(@Valid @RequestBody AppEtatD etatD) {
+		System.out.println("******* maherrrrr" );
+
+		System.out.print("*******" + etatD.getEtatText());
 		iEtatD.saveEtatD(etatD);
 	}
 

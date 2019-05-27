@@ -30,7 +30,7 @@ public class AppManifeste implements Serializable {
         this.appMoyenTransport = appMoyenTransport;
     }
 
-    public AppManifeste( AppMoyenTransport appMoyenTransport, AppConsignataire consignataire, AppTitreTransport appTitreTransport, List<AppBureauDouane> bureauDouane, AppTransporteur appTransporteur, String acconier, int manNumVoyage, LocalDate manDateDepart, LocalDate manDateArrive, int manNumEnregistrement, LocalDate manDateEnregistrement, String manLieuChargement, String manLieuDestination, String manModeTransport, String manTypeManifeste, int manNumEscale, int manjaugeBrute, int manJaugeNette, LocalDate manDateEscale, long ttNbRE, String refpaysD, String refpaysA, AppEtatD appEtatD) {
+    public AppManifeste( AppMoyenTransport appMoyenTransport, AppConsignataire consignataire, AppTitreTransport appTitreTransport, List<AppBureauDouane> bureauDouane, AppTransporteur appTransporteur, String acconier, int manNumVoyage, LocalDate manDateDepart, LocalDate manDateArrive, int manNumEnregistrement, LocalDate manDateEnregistrement, String manLieuChargement, String manLieuDestination, String manModeTransport, String manTypeManifeste, int manNumEscale, int manjaugeBrute, int manJaugeNette, LocalDate manDateEscale, long ttNbRE, String refpaysD, String refpaysA) {
         this.appMoyenTransport = appMoyenTransport;
         this.consignataire = consignataire;
         this.appTitreTransport = appTitreTransport;
@@ -53,7 +53,6 @@ public class AppManifeste implements Serializable {
         this.ttNbRE = ttNbRE;
         this.refpaysD = refpaysD;
         this.refpaysA = refpaysA;
-        this.appEtatD = appEtatD;
     }
 
     @ManyToOne
@@ -68,7 +67,7 @@ public class AppManifeste implements Serializable {
         this.consignataire = consignataire;
     }
 
-    public AppManifeste( AppConsignataire consignataire, AppTitreTransport appTitreTransport, List<AppBureauDouane> bureauDouane, AppTransporteur appTransporteur, String acconier, int manNumVoyage, LocalDate manDateDepart, LocalDate manDateArrive, int manNumEnregistrement, LocalDate manDateEnregistrement, String manLieuChargement, String manLieuDestination, String manModeTransport, String manTypeManifeste, int manNumEscale, int manjaugeBrute, int manJaugeNette, LocalDate manDateEscale, long ttNbRE, String refpaysD, String refpaysA, AppEtatD appEtatD) {
+    public AppManifeste( AppConsignataire consignataire, AppTitreTransport appTitreTransport, List<AppBureauDouane> bureauDouane, AppTransporteur appTransporteur, String acconier, int manNumVoyage, LocalDate manDateDepart, LocalDate manDateArrive, int manNumEnregistrement, LocalDate manDateEnregistrement, String manLieuChargement, String manLieuDestination, String manModeTransport, String manTypeManifeste, int manNumEscale, int manjaugeBrute, int manJaugeNette, LocalDate manDateEscale, long ttNbRE, String refpaysD, String refpaysA) {
 
         this.consignataire = consignataire;
         this.appTitreTransport = appTitreTransport;
@@ -91,7 +90,6 @@ public class AppManifeste implements Serializable {
         this.ttNbRE = ttNbRE;
         this.refpaysD = refpaysD;
         this.refpaysA = refpaysA;
-        this.appEtatD = appEtatD;
     }
 
     @ManyToOne
@@ -177,10 +175,6 @@ public class AppManifeste implements Serializable {
     @Column(name = "REFERENCE_PAYS_ARRIVE")
     private String refpaysA;
 
-    @JsonIgnore
-    @OneToOne
-    public AppEtatD appEtatD;
-
     public AppManifeste() {
         super();
     }
@@ -206,13 +200,7 @@ public class AppManifeste implements Serializable {
     }
 
 
-    public AppEtatD getAppEtatD() {
-        return appEtatD;
-    }
 
-    public void setAppEtatD(AppEtatD appEtatD) {
-        this.appEtatD = appEtatD;
-    }
 
     public int getManNumEnregistrement() {
         return manNumEnregistrement;
@@ -372,7 +360,7 @@ public class AppManifeste implements Serializable {
         this.manLieuDestination = manLieuDestination;
     }
 
-    public AppManifeste( AppTitreTransport appTitreTransport, List<AppBureauDouane> bureauDouane, AppTransporteur appTransporteur, String acconier, int manNumVoyage, LocalDate manDateDepart, LocalDate manDateArrive, int manNumEnregistrement, LocalDate manDateEnregistrement, String manLieuChargement, String manLieuDestination, String manModeTransport, String manTypeManifeste, int manNumEscale, int manjaugeBrute, int manJaugeNette, LocalDate manDateEscale, long ttNbRE, String refpaysD, String refpaysA, AppEtatD appEtatD) {
+    public AppManifeste( AppTitreTransport appTitreTransport, List<AppBureauDouane> bureauDouane, AppTransporteur appTransporteur, String acconier, int manNumVoyage, LocalDate manDateDepart, LocalDate manDateArrive, int manNumEnregistrement, LocalDate manDateEnregistrement, String manLieuChargement, String manLieuDestination, String manModeTransport, String manTypeManifeste, int manNumEscale, int manjaugeBrute, int manJaugeNette, LocalDate manDateEscale, long ttNbRE, String refpaysD, String refpaysA) {
 
         this.appTitreTransport = appTitreTransport;
         this.bureauDouane = bureauDouane;
@@ -394,6 +382,5 @@ public class AppManifeste implements Serializable {
         this.ttNbRE = ttNbRE;
         this.refpaysD = refpaysD;
         this.refpaysA = refpaysA;
-        this.appEtatD = appEtatD;
     }
 }

@@ -15,7 +15,7 @@ public class EtatDImpl implements IEtatD{
 	private EtatDRepository etatDRepository; 
 	@Override
 	public void saveEtatD(AppEtatD etatD) {
-		etatDRepository.save(etatD); 
+		etatDRepository.saveAndFlush(etatD);
 		
 	}
 
