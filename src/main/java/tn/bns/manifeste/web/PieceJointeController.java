@@ -40,6 +40,11 @@ return fileName;
     public @ResponseBody List<AppPieceJointe> getAllPiecesJointes() {
         return iPieceJointe.getPieceJointes();
     }
+ @GetMapping("/allByTTCode/{ttCode}")
+    public @ResponseBody List<AppPieceJointe> getAllPiecesJointesByTTCode(@PathVariable long ttCode) {
+        System.out.println("----" +ttCode);
+        return iPieceJointe.getAllPiecesJointesByTTCode(ttCode);
+    }
 
     @DeleteMapping("/delete-by-id/{pieceJointeId}")
     public void deletePieceJointe(@PathVariable(name = "pieceJointeId") long pieceJointeId) {

@@ -1,5 +1,7 @@
 package tn.bns.manifeste.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -19,7 +21,7 @@ public class AppConteneur implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_CONTENEUR" )
 	private Long contId;
-
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "CODE_TITRE_TRANSPORT")
 	private AppTitreTransport appTitreTransport;

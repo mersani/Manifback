@@ -13,6 +13,7 @@ public interface IPieceJointe {
     public String storeFile(String fileName, byte[] fileContent, String fileFolder) throws IOException;
 
     public List<AppPieceJointe> getPieceJointes();
+    public List<AppPieceJointe> getAllPiecesJointesByTTCode(Long ttcode);
 
     public void deletePieceJointe(long pieceJointeId);
 

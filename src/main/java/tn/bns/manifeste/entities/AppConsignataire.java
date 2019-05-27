@@ -1,19 +1,12 @@
 package tn.bns.manifeste.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 
 @Entity
@@ -29,22 +22,16 @@ public class AppConsignataire extends AppUser implements Serializable {
 	public void setConsAdresse(String consAdresse) {
 		this.consAdresse = consAdresse;
 	} 
-	
-	@ManyToOne
+	@JsonIgnore
+	@OneToMany
 	@JoinColumn (name="ID_MANIFESTE") 
-	private AppManifeste appManifeste;
+	private List<AppManifeste> appManifeste;
 
-	public AppManifeste getAppManifeste() {
+	public List<AppManifeste> getAppManifeste() {
 		return appManifeste;
 	}
 
-	public void setAppManifeste(AppManifeste appManifeste) {
-		this.appManifeste = appManifeste;
-	}
-
-	public AppConsignataire(String consAdresse, AppManifeste appManifeste) {
-		super();
-		this.consAdresse = consAdresse;
+	public void setAppManifeste(List<AppManifeste> appManifeste) {
 		this.appManifeste = appManifeste;
 	}
 

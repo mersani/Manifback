@@ -2,15 +2,7 @@ package tn.bns.manifeste.entities;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
+import javax.persistence.*;
 
 
 @Entity
@@ -21,7 +13,7 @@ public class AppPieceJointe implements Serializable {
 @Column(name="ID_PIECE_JOINTE" )
    private Long pieceJointeId;
 
-
+@ManyToOne()
 @JoinColumn(name= "CODE_TITRE_TRANSPORT") 
 private AppTitreTransport ttCode;
 
@@ -31,7 +23,21 @@ private String nomPieceJointe;
 @Column (name="type_PIECE_JOINTE" )
 private String typePieceJointe;
 
-public Long getPieceJointeId() {
+	public AppTitreTransport getTtCode() {
+		return ttCode;
+	}
+
+	public void setTtCode(AppTitreTransport ttCode) {
+		this.ttCode = ttCode;
+	}
+
+	public AppPieceJointe(AppTitreTransport ttCode, String nomPieceJointe, String typePieceJointe) {
+		this.ttCode = ttCode;
+		this.nomPieceJointe = nomPieceJointe;
+		this.typePieceJointe = typePieceJointe;
+	}
+
+	public Long getPieceJointeId() {
 	return pieceJointeId;
 }
 

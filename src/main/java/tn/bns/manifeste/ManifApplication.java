@@ -13,10 +13,12 @@ import tn.bns.manifeste.entities.AppUser;
 import tn.bns.manifeste.entities.AppRole;
 import tn.bns.manifeste.services.IAccountService;
 
+import java.util.Date;
+
 
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {SecurityAutoConfiguration.class})
-public class ManifApplication{
+public class ManifApplication {
 
 
     public static void main(String[] args) {
@@ -32,10 +34,15 @@ public class ManifApplication{
         return new BCryptPasswordEncoder();
     }
 
-
-
-
-
+/*
+    @Override
+    public void run(String... args) throws Exception {
+        AppUser appUser = new AppUser("maher", "12345", "maher@gmail.com", "012345678","maher", "maherGroup", new Date("27/05/2019"));
+        AppRole appRole = new AppRole("CONCILIATEUR");
+accountService.saveUser(appUser);
+accountService.saveRole(appRole);
+accountService.addRoleToUser(appUser.getUsername(),appRole.getRoleName());
+    }*/
 }
 
 

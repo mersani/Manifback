@@ -52,6 +52,11 @@ public class PieceJointeImpl implements IPieceJointe{
 	}
 
 	@Override
+	public List<AppPieceJointe> getAllPiecesJointesByTTCode(Long ttcode) {
+		return pieceJointeRepository.findByTtCode(ttcode);
+	}
+
+	@Override
 	public void deletePieceJointe(long pieceJointeId) {
 		 pieceJointeRepository.deleteById(pieceJointeId);
 	}

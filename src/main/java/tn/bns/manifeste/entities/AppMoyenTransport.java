@@ -1,27 +1,22 @@
 package tn.bns.manifeste.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Entity
 
 @Table
 public class AppMoyenTransport implements Serializable {
-	
+
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="ID_MOYENT")
 	private Long idMoyenT;
-	
-	@ManyToOne
+	@JsonIgnore
+	@OneToOne
 	@JoinColumn (name="ID_MANIFESTE")
 	private AppManifeste appManifeste;
 	

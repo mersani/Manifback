@@ -30,7 +30,7 @@ public class TitreTransportController {
 	public void saveTitreTransport(@RequestBody AppTitreTransport titreTransport) {
 		iTitreTransport.saveTitreTransport(titreTransport);
 	}
-	@GetMapping("/all ")
+	@GetMapping("/all")
 	public @ResponseBody List<AppTitreTransport> getAllTitresTransports(){
 		return iTitreTransport.getTitresTransports(); 
 	}

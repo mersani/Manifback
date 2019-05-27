@@ -1,5 +1,7 @@
 package tn.bns.manifeste.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,10 +12,10 @@ public class AppIntervenant implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID_INTERVENANT" )
 	private Long interId;
-	
+
 	@OneToOne
-	@JoinColumn(name= "ID_MANIFESTE") 
-	private AppManifeste manId;
+	@JoinColumn(name= "ttCode")
+	private AppTransporteur appTransporteur;
 	
 	@Column(name = "NOM_EXPEDITEUR" )
 	private String nomExp;
@@ -34,12 +36,6 @@ public class AppIntervenant implements Serializable {
 	}
 	public void setInterId(Long interId) {
 		this.interId = interId;
-	}
-	public AppManifeste getManId() {
-		return manId;
-	}
-	public void setManId(AppManifeste manId) {
-		this.manId = manId;
 	}
 	public String getNomExp() {
 		return nomExp;
@@ -83,10 +79,21 @@ public class AppIntervenant implements Serializable {
 	public void setNumContDest(Long numContDest) {
 		this.numContDest = numContDest;
 	}
-	public AppIntervenant(AppManifeste manId, String nomExp, String nomDest, String adrExp, String adrDest,
-			String mailDest, String telDest, Long numContDest) {
+	public AppIntervenant() {
 		super();
-		this.manId = manId;
+		// TODO Auto-generated constructor stub
+	}
+
+	public AppTransporteur getAppTransporteur() {
+		return appTransporteur;
+	}
+
+	public void setAppTransporteur(AppTransporteur appTransporteur) {
+		this.appTransporteur = appTransporteur;
+	}
+
+	public AppIntervenant(AppTransporteur appTransporteur, String nomExp, String nomDest, String adrExp, String adrDest, String mailDest, String telDest, Long numContDest) {
+		this.appTransporteur = appTransporteur;
 		this.nomExp = nomExp;
 		this.nomDest = nomDest;
 		this.adrExp = adrExp;
@@ -95,13 +102,5 @@ public class AppIntervenant implements Serializable {
 		this.telDest = telDest;
 		this.numContDest = numContDest;
 	}
-	public AppIntervenant() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
-	
-	
+
 }

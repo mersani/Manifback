@@ -9,10 +9,10 @@ import tn.bns.manifeste.entities.ManifestObject;
 
 public interface IManifeste {
 
-	public boolean saveManifeste(ManifestObject manifestObject);
+	public AppManifeste saveManifeste(AppManifeste manifestObject);
 	public boolean saveConnaissement(ConnaissementObject connaissementObject);
 	public List<AppManifeste> getManifeste();
 	public void DeleteManifeste(long manId);
-	public void updateManifeste(AppManifeste appManifeste,long manId); 
+	public Boolean updateManifeste(AppManifeste appManifeste,Long manId);
 	public AppManifeste getOneManifeste(long manId);  
 }
