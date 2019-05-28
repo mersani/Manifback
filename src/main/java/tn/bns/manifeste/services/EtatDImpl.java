@@ -14,8 +14,8 @@ public class EtatDImpl implements IEtatD{
 	@Autowired
 	private EtatDRepository etatDRepository; 
 	@Override
-	public void saveEtatD(AppEtatD etatD) {
-		etatDRepository.saveAndFlush(etatD);
+	public AppEtatD saveEtatD(AppEtatD etatD) {
+		return etatDRepository.saveAndFlush(etatD);
 		
 	}
 

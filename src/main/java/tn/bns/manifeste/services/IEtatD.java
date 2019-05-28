@@ -6,6 +6,6 @@ import tn.bns.manifeste.entities.AppEtatD;
 import java.util.List;
 
 public interface IEtatD {
-	public void saveEtatD(AppEtatD etatD);
+	public AppEtatD saveEtatD(AppEtatD etatD);
 	public List<AppEtatD> getAll();
 }

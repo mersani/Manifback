@@ -13,17 +13,17 @@ import java.util.List;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping(value = "etatD", produces = "application/json")
+@RequestMapping(value = "Rapport", produces = "application/json; charset=utf-8")
 public class EtatDController {
 	@Autowired
 	private IEtatD iEtatD;
 
 	@PostMapping("/save")
-	public void saveEtatD(@Valid @RequestBody AppEtatD etatD) {
+	public AppEtatD saveEtatD(@RequestBody AppEtatD appEtatD) {
 		System.out.println("******* maherrrrr" );
 
-		System.out.print("*******" + etatD.getEtatText());
-		iEtatD.saveEtatD(etatD);
+		System.out.println("*******" + appEtatD.getEtatText());
+		return iEtatD.saveEtatD(appEtatD);
 	}
 
 

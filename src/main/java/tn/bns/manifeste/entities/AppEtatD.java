@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table
-public class AppEtatD implements Serializable {
+public class AppEtatD {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="ID_ETAT_DIFFERENTIEL" )
     private Long etatId;
@@ -19,41 +19,36 @@ public class AppEtatD implements Serializable {
     @Column(name="ETAT_DIFFERENTIEL" )
     private String etatText;
 
+    public Long getEtatId() {
+        return etatId;
+    }
 
-	public Long getEtatId() {
-		return etatId;
-	}
+    public void setEtatId(Long etatId) {
+        this.etatId = etatId;
+    }
 
-	public void setEtatId(Long etatId) {
-		this.etatId = etatId;
-	}
+    public AppManifeste getManifeste() {
+        return manifeste;
+    }
 
-     public String getEtatText() {
-		return etatText;
-	}
+    public void setManifeste(AppManifeste manifeste) {
+        this.manifeste = manifeste;
+    }
 
-	public void setEtatText(String etatId) {
-		this.etatText = etatText;
-	}
+    public String getEtatText() {
+        return etatText;
+    }
 
-	public AppManifeste getManifeste() {
-		return manifeste;
-	}
+    public void setEtatText(String etatText) {
+        this.etatText = etatText;
+    }
 
-	public AppEtatD(AppManifeste manifeste) {
-		this.manifeste = manifeste;
-	}
+    public AppEtatD(AppManifeste manifeste, String etatText) {
+        this.manifeste = manifeste;
+        this.etatText = etatText;
+    }
 
-	public void setManifeste(AppManifeste manifeste) {
-		this.manifeste = manifeste;
-	}
-
-	public AppEtatD(AppManifeste manifeste, String etatText) {
-		this.manifeste = manifeste;
-		this.etatText = etatText;
-	}
-
-	public AppEtatD() {
-	}
+    public AppEtatD() {
+    }
 }
 
